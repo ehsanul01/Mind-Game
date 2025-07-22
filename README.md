@@ -1,4 +1,4 @@
-##Mind Reader Game
+## Mind Reader Game
 
 An intelligent browser-based guessing game built with **TensorFlow.js**, **Firebase Firestore**, and the **Web Speech API**. This project asks you a series of yes/no questions to guess what you're thinking — and if it's wrong, it learns from you.
 
