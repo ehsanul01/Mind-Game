@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mind Reader Game</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.12.0/dist/tf.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <button onclick="toggleDarkMode()" style="float:right; font-size:0.9rem;">🌙 Toggle Dark Mode</button>
+    <h1>🧠 Mind Reader</h1>
+    <div id="question-box">
+      <p id="question">Loading...</p>
+      <button onclick="handleAnswer(1)">Yes</button>
+      <button onclick="handleAnswer(0)">No</button>
+      <p><em>Or press "V" and say: “Yes” or “No”</em></p>
+    </div>
+    <button onclick="startListening()">🎙️ Speak</button>
+
+    <div id="result-box">
+      <p id="result"></p>
+      <div id="learn-box" style="display: none;">
+        <input type="text" id="actual" placeholder="What were you thinking?">
+        <br>
+        <button onclick="learn()">Teach Me</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase Setup -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT.appspot.com",
+      messagingSenderId: "YOUR_MESSAGING_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    window.firebaseDB = db;
+    window.firebaseFns = { collection, getDocs, addDoc };
+  </script>
+
+  <script src="tf-model.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
