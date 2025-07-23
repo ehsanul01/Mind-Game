@@ -19,5 +19,5 @@ An intelligent browser-based guessing game built with **TensorFlow.js**, **Fireb
 
 ## 📁 Folder Structure
 
-I cant purt some info here so , after i find out how it howrk i will keep things updated. 
+I cant put some info here cause game somehow didnt working accordingly,So, after i find out how it work i will keep things updated. 
 
